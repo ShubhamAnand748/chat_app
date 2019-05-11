@@ -254,7 +254,6 @@ async function userUpdatePasswordController(req, res) {
         } else {
           //----------find single object ------------------
           let otpdata = await commonFunctions.getSingleRow(APIRef, 'tbl_user', 'otp', otp, 'update user password', )
-            console.log('otpdata', otpdata);
             
           if (otpdata.length > 0) {
                 // -----Update Password ------------
