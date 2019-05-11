@@ -203,9 +203,9 @@ async function userSendOtpController(req, res) {
                 mail_obj.subject = "Otp for password";
                 mail_obj.text = "blank";
                 mail_obj.html = "blank";
-                mail_obj.templateId = "d-3f4d614c806041fe99781f56a0306d1d";
+                mail_obj.templateId = "d-cd6ef814bfa14b59969c1e7379ecfb64";
                 let dynamic_template_data = {
-                    username: userData.user_first_name,
+                    user_name: userData.user_first_name,
                     otp: otp_val
                 };
                 userService.sendgrid(mail_obj, dynamic_template_data);
