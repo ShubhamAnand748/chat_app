@@ -52,36 +52,6 @@ socket.on('user_online_status', (user_id) => {
 
 //********************************* End of Check online status ***************************/
 
-
-
-//*****************************************************************************************/
-//                               Check online status                                      //
-//                             Socket for chat message                                    //
-//*****************************************************************************************/
-socket.on('chat_message', (chatObj) => {
-    try {        
-        if(chatObj.id_array){
-            let newArray = chatObj.id_array.split(',');                        
-            newArray.forEach(user_id => {
-                user_id = parseInt(user_id);
-                console.log("user_id -", user_id);                
-                let userSocket = socketUsers[user_id];
-
-        if (userSocket) {
-            userSocket.emit('chat_message', 'user_id - ' + chatObj.sender_id + ':', chatObj.message);
-            console.log('user_id - ' + chatObj.sender_id + ':', chatObj.message);            
-        }
-    });
-}
-    } catch (e) {
-        console.log(e);
-        socket.emit('chat_message', e);
-    }
-  });
-
-//*********************************** End of chat message *********************************/
-
-
 socket.on('disconnect', (error) => {
     console.log('User disconnected', error);
 });
